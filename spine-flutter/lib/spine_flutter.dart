@@ -1512,6 +1512,10 @@ class RegionAttachment extends Attachment<spine_region_attachment> {
     return result;
   }
 
+  void updateRegion() {
+    _bindings.spine_region_attachment_update_region(_attachment);
+  }
+
   /// The local x translation.
   double getX() {
     return _bindings.spine_region_attachment_get_x(_attachment);
