@@ -53,10 +53,13 @@ late Allocator _allocator;
 Future<void> initSpineFlutter({bool useStaticLinkage = false, bool enableMemoryDebugging = false}) async {
   final ffi = await initSpineFlutterFFI(useStaticLinkage);
   _bindings = SpineFlutterBindings(ffi.dylib);
+  spineFlutterBindings = _bindings;
   _allocator = ffi.allocator;
   if (enableMemoryDebugging) _bindings.spine_enable_debug_extension(-1);
   return;
 }
+
+SpineFlutterBindings get spineFlutterBindings => _bindings;
 
 int majorVersion() => _bindings.spine_major_version();
 
